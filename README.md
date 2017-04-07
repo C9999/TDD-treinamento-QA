@@ -8,8 +8,8 @@ Como lojista, para fidelizar um cliente quero saber quanto de desconto posso con
 
 ## Critérios
 
-Acima de R$ 100 e abaixo de R$ 200 => 10%
-Acima de R$ 200 e abaixo de R$ 300 => 20%
-Acima de R$ 300 e abaixo de R$ 400 => 25%
-Acima de R$ 400 => 30%
+Acima de R$ 100 e abaixo de R$ 200 => 10% <br>
+Acima de R$ 200 e abaixo de R$ 300 => 20% <br>
+Acima de R$ 300 e abaixo de R$ 400 => 25% <br>
+Acima de R$ 400 => 30% <br>
 Se existir no carrinho um filme com gênero ação somar + 5% de desconto.
