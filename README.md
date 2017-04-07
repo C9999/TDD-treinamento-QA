@@ -4,9 +4,7 @@ Desenvolva uma solução em Ruby para atender aos critérios da história abaixo
 
 ## User history
 
-Como lojista
-Para fidelizar um cliente
-Quero saber quanto de desconto posso conceder no carrinho.
+Como lojista, para fidelizar um cliente quero saber quanto de desconto posso conceder no carrinho.
 
 ## Critérios
 
