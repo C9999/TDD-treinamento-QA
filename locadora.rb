@@ -1,3 +1,28 @@
+class CarrinhoRegras
+  def valida_promocao(t)
+    if t >= 100 && t < 200
+      return 0.1
+    elsif t >= 200 && t < 300
+      return 0.2
+    elsif t >= 300 && t < 400
+      return 0.25
+    elsif t >= 400
+      return 0.3
+    else
+      return 0
+    end
+  end
+
+  def valida_genero_acao(filme_acao)
+    if filme_acao == true
+      return 0.05
+    else
+      return 0
+    end
+  end
+end
+
+=begin
 class FilmesEmCatalogo
   def initialize(id, titulo, genero, valor)
     @id = id
@@ -8,7 +33,7 @@ class FilmesEmCatalogo
   end
 
   def descricao()
-      puts " ID: #{@id}, #{@titulo}, Genero: #{@genero} R$#{@valor},00 "
+    puts " ID: #{@id}, #{@titulo}, Genero: #{@genero} R$#{@valor},00 "
   end
 end
 
@@ -18,9 +43,9 @@ def option_carrinho()
   if d == 1
     inclui_filme_no_carrinho()
   elsif d == 2
-     fecha_carrinho()
+    fecha_carrinho()
   else
-     option_carrinho()
+    option_carrinho()
   end
 end
 
@@ -31,6 +56,7 @@ def inclui_filme_no_carrinho()
   $total_de_filmes = $total_de_filmes + 1
   somatoria(num_id)
 end
+
 
 def somatoria(num_id) #Fase 2: Implementar um hash de id para valor
   if num_id == 1
@@ -50,20 +76,6 @@ def somatoria(num_id) #Fase 2: Implementar um hash de id para valor
     inclui_filme_no_carrinho()
   end
   option_carrinho()
-end
-
-def valida_promocao(t)
-  if t >= 100 && t < 200
-    return 0.1
-  elsif t >= 200 && t < 300
-    return 0.2
-  elsif t >= 300 && t < 400
-    return 0.25
-  elsif t >= 400
-    return 0.3
-  else
-    return 0
-  end
 end
 
 def fecha_carrinho()
@@ -115,3 +127,4 @@ scp = FilmesEmCatalogo.new(5, "The Scapegoat", "Drama", 100)
 bad = FilmesEmCatalogo.new(6, "Meu Malvado Favorito", "Animação", 200)
 
 inclui_filme_no_carrinho()
+=end
