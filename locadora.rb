@@ -1,52 +1,14 @@
-
-class FilmesEmCatalogo
-  def initialize(id, titulo, genero, valor)
-    @id = id
-    @titulo = titulo
-    @genero = genero
-    @valor = valor
-    descricao()
-  end
-
-  def descricao()
-    puts " ID: #{@id}, #{@titulo}, Genero: #{@genero} R$#{@valor},00 "
-  end
-end
-
+require_relative "filmes"
+require_relative "regras"
 class CarrinhoRegras
-  @@carrinho_qtd = [ ]
-  @@total = 0
-  @@total_de_filmes = 0
-
-  def valida_promocao(t)
-    if t >= 100 && t < 200
-      return 0.1
-    elsif t >= 200 && t < 300
-      return 0.2
-    elsif t >= 300 && t < 400
-      return 0.25
-    elsif t >= 400
-      return 0.3
-    else
-      return 0
-    end
-  end
-
-  def valida_genero_acao(filme_acao)
-    if filme_acao == true
-      return 0.05
-    else
-      return 0
-    end
-  end
 
   def option_carrinho()
-    puts "Deseja incluir um novo filme ?(1 = Sim, 2 = Não): "
-    d = Integer(gets.chomp) #Resposta de Sim ou Não
-    #d = (gets.chomp).to_i #Resposta de Sim ou Não
-    if d == 1
+    puts "Deseja incluir um novo filme ?(s = Sim, n = Não): "
+    #d = Integer(gets.chomp) #Resposta de Sim ou Não
+    d = (gets.chomp) #Resposta de Sim ou Não
+    if d == "s"
       inclui_filme_no_carrinho(0)
-    elsif d == 2
+    elsif d == "n"
       inclui_filme_no_carrinho(1)
     else
       inclui_filme_no_carrinho(1)
@@ -57,7 +19,7 @@ class CarrinhoRegras
     if option == 0
       puts "Digite o ID do filme a ser inserido no carrinho: "
       num_id = Integer(gets.chomp) #ID do filme
-      #num_id = (gets.chomp) #ID do filme
+      #num_id = (gets.chomp).to_i #ID do filme
       @@carrinho_qtd << num_id
       @@total_de_filmes = @@total_de_filmes + 1
       temp = somatoria(num_id)
@@ -67,24 +29,6 @@ class CarrinhoRegras
       fecha_carrinho()
     else
       fecha_carrinho()
-    end
-  end
-
-  def somatoria(num_id)
-    if num_id == 1
-      return 45
-    elsif num_id == 2
-      return 55
-    elsif num_id == 3
-      return 100
-    elsif num_id == 4
-      return 55
-    elsif num_id == 5
-      return 100
-    elsif num_id == 6
-      return 200
-    else
-      return 0
     end
   end
 
@@ -105,18 +49,20 @@ class CarrinhoRegras
     puts
     puts "Valor com desconto: R$ #{total_promocional}"
     puts
-    puts "Aprovar desconto para esse cliente ?(1 = Sim, 2 = Não): "
-    e = Integer(gets.chomp) #Aprovação do desconto no final da compra
-    #e = (gets.chomp) #Aprovação do desconto no final da compra
-    if e == 1
+    puts "Aprovar desconto para esse cliente ?(s = Sim, n = Não): "
+    #e = Integer(gets.chomp) #Aprovação do desconto no final da compra
+    e = (gets.chomp) #Aprovação do desconto no final da compra
+    if e == "s"
       puts ">>> Desconto de #{desconto * 100}% aplicado com sucesso!, total a ser pago: R$ #{total_promocional} <<<"
-    elsif e == 2
+      puts
+    elsif e == "n"
       puts ">>> Compra fechada sem desconto, total a ser pago: R$ #{@@total},00 <<<"
+      puts
     else
       desconto = temp = total_promocional = 0
       fecha_carrinho()
     end
-  end
+  end#Voltar na Main com if == 1 fazer os calculos
 end
 
 #Main **************************************
