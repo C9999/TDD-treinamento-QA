@@ -1,7 +1,8 @@
-class CarrinhoRegras
-  @@carrinho_qtd = [ ]
-  @@total = 0
-  @@total_de_filmes = 0
+class Regras
+  $carrinho_qtd = [ ]
+  $total = 0
+  $total_de_filmes = 0
+  $i = 0
 
   def valida_genero_acao(filme_acao)
     if filme_acao == true
@@ -25,7 +26,8 @@ class CarrinhoRegras
     end
   end
 
-  def somatoria(num_id)
+  public
+  def soma_valores(num_id)
     if num_id == 1
       return 45
     elsif num_id == 2
