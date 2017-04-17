@@ -3,9 +3,12 @@ class Regras
   $total = 0
   $total_de_filmes = 0
   $i = 0
+  $filme_acao = false
+  $desconto_filme_acao = 0
 
-  def valida_genero_acao(filme_acao)
-    if filme_acao == true
+  def valida_genero_acao(ativado)
+    if ativado == true
+      $filme_acao = true
       return 0.05
     else
       return 0

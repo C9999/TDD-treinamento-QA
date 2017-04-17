@@ -17,7 +17,6 @@ end
 def option_carrinho(obj)
   @obj = obj
   puts "Deseja incluir um novo filme ?(s = Sim, n = Não): "
-  #d = Integer(gets.chomp) #Resposta de Sim ou Não
   d = (gets.chomp) #Resposta de Sim ou Não
   if d == "s"
     $i = 0
@@ -34,13 +33,16 @@ end
 def inclui_filme_no_carrinho(obj)
   @obj = obj
   while $i == 0 do
-    break if $i != 0
     puts "Digite o ID do filme a ser inserido no carrinho: "
     num_id = Integer(gets.chomp) #ID do filme
     $carrinho_qtd<<num_id
     $total_de_filmes = $total_de_filmes + 1
     temp = obj.soma_valores(num_id)
     $total += temp
+
+    if num_id == 3 || num_id == 4
+      $desconto_filme_acao = obj.valida_genero_acao(true)
+    end
     option_carrinho(obj)
   end
 end
@@ -68,6 +70,10 @@ inclui_filme_no_carrinho(carrinho)
 desconto = carrinho.valida_promocao($total)
 temp = $total * desconto
 total_promocional = $total - temp
+
+promo = $total * $desconto_filme_acao
+total_promocional = total_promocional - promo
+acumulado = promo
 puts
 puts "Calculando o valor carrinho..."
 puts
@@ -77,14 +83,22 @@ puts "Quantidade de filmes alugados: #{$total_de_filmes}"
 puts
 puts "Valor total:  R$ #{$total},00"
 puts
-puts "Possivel desconto: -#{desconto * 100}%"
+puts "Possível desconto: -#{desconto * 100}%"
 puts
+if $filme_acao == true
+  acumulado = $desconto_filme_acao + desconto
+  acumulado = acumulado * 100
+  puts "Desconto promocional ativo devido a locação de filme de Ação, bonus de -#{$desconto_filme_acao * 100}% "
+  puts
+  puts "Total de descontos acumulados: -#{acumulado}%"
+  puts
+end
 puts "Valor com desconto: R$ #{total_promocional}"
 puts
 puts "Aprovar desconto para esse cliente ?(s = Sim, n = Não): "
-#e = Integer(gets.chomp) #Aprovação do desconto no final da compra
 e = (gets.chomp) #Aprovação do desconto no final da compra
 if e == "s"
+  desconto = desconto + $desconto_filme_acao
   puts ">>> Desconto de #{desconto * 100}% aplicado com sucesso!, total a ser pago: R$ #{total_promocional} <<<"
   puts
 elsif e == "n"
